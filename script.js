@@ -133,3 +133,105 @@ const filteredCars = cars.filter((car) => {
 })
 
 console.log(filteredCars)
+
+//* activity solution:
+
+const adults = (arr) => {
+  //your code here
+  let filteredPeople = arr.filter((person) => {
+    return person.age >= 21;
+  });
+
+  let mappedPeople = filteredPeople.map((person) => {
+    return person.name;
+  });
+
+  return mappedPeople;
+
+  /* 
+  return arr
+    .filter((person) => {
+      return person.age >= 21;
+    })
+    .map((person) => {
+      return person.name;
+    });
+  */
+};
+
+const adults2 = (arr) => arr.filter((person) => person.age >= 18).map((person) => person.name);
+
+
+//* reduce()
+const cars2 = [
+  { brand: "Mercedes-Benz", year: 2012, weight: 0.8 },
+  { brand: "Porsche", year: 2020, weight: 1.3 },
+  { brand: "Bugatti", year: 2003, weight: 0.5 },
+  { brand: "Volvo", year: 2010, weight: 1.9 },
+  { brand: "Smart", year: 2010, weight: 0.1 },
+];
+
+// sum all the weights of the cars
+
+let total = cars2.reduce((acc, car) => {
+
+  console.log(acc, car.weight)
+
+  return acc + (car.weight * 100)
+  // reduce should ALWAYS return the next value for the accumulator
+}, 0)
+
+console.log(total)
+
+// let total = 0;
+// // for through the cars
+// // total += car.weight
+
+
+//* reverse()
+
+let someNumbers = [1, 2, 3, 4, 5]
+
+// let reversedNumbers = someNumbers.reverse() // MUTATES the original
+let reversedNumbers = someNumbers.toReversed() // MUTATES the original
+
+console.log("new", reversedNumbers)
+console.log("origin", someNumbers)
+
+// what if we don't want to mutate the original
+
+//1. cloning the array
+//2. toReversed()
+
+//* sort() and toSorted()
+
+let someLetter = ["e", "aa", "ba", "ce", "du", "da", "Ac"]
+
+let orderedLetters = someLetter.toSorted()
+
+console.log(orderedLetters)
+
+let someNumbers1 = [1, 20, 100, 130, 2, 4, 43]
+
+let orderedNumbers = someNumbers1.toSorted((elem1, elem2) => {
+  // we are creating a sorting algorithm logic that says:
+  // if we return a negative value (-1) the first elem goes first
+  // if we return a positive value (1) the second elem goes first
+  // if we return 0, they are the same.
+
+  console.log(elem1, elem2)
+
+  if (elem1 > elem2) {
+    return 1
+  } else if (elem2 > elem1) {
+    return -1
+  } else {
+    return 0
+  }
+
+  // let random = Math.floor(Math.random() * 2) - 1 // - 1, 0, 1
+  // return random
+
+})
+
+console.log(orderedNumbers)
